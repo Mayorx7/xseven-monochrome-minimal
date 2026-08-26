@@ -1,73 +1,121 @@
-# Welcome to your Lovable project
+# XSeven Monochrome Minimal
 
-## Project info
+A sleek, cyberpunk-inspired, monochrome web and mobile application built with React, Vite, and Supabase. The project is designed with a minimalistic aesthetic featuring "binary rain" effects and cyberpunk dialogs, offering a modern user experience with a robust backend.
 
-**URL**: https://lovable.dev/projects/78acaa02-e120-4d37-9f1b-676b8af27072
+## Features
 
-## How can I edit this code?
+- **Authentication**: Secure user login and registration powered by Supabase Auth.
+- **Social Feed & Profile**: Interactive feed screens, user profiles, and replying/notification systems.
+- **Admin Dashboard**: Specialized administrative interface for managing the platform.
+- **Cyberpunk Aesthetics**: Custom components including `BinaryRain` and `CyberpunkDialog` for a unique look and feel.
+- **Cross-Platform**: Web-first approach, fully deployable to Android and iOS using Capacitor.
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+- **Frontend**: React 18, TypeScript, Vite
+- **UI & Styling**: Tailwind CSS, shadcn-ui, Radix UI, Lucide React
+- **Backend & Database**: Supabase (PostgreSQL, Auth)
+- **Mobile**: Capacitor (Cross-platform native mobile deployment)
+- **Routing & State**: React Router DOM, React Query, Zustand (or context)
+- **Forms**: React Hook Form, Zod
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/78acaa02-e120-4d37-9f1b-676b8af27072) and start prompting.
+## Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
+```
+├── src/
+│   ├── components/    # Reusable UI components (shadcn, Cyberpunk dialogs, etc.)
+│   ├── pages/         # Application screens (Auth, Feed, Profile, Admin, etc.)
+│   ├── hooks/         # Custom React hooks (e.g., useNotifications)
+│   ├── services/      # External service integrations
+│   └── supabaseClient.ts # Supabase initialization and connection
+├── public/            # Static assets
+├── android/           # Generated Android project (Capacitor)
+├── ios/               # Generated iOS project (Capacitor)
+└── ...
+```
 
-**Use your preferred IDE**
+## Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) or [bun](https://bun.sh/)
+- A [Supabase](https://supabase.com/) project
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Setup & Installation
 
-Follow these steps:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Mayorx7/xseven-monochrome-minimal.git
+   cd xseven-monochrome-minimal
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. **Set up Environment Variables:**
+   - Copy `.env.example` to `.env` (or `.env.local`).
+   - Fill in your Supabase credentials:
+     ```env
+     VITE_SUPABASE_URL=your_supabase_project_url
+     VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+     ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+4. **Database Setup:**
+   - Execute the provided SQL scripts (`database-schema.sql`, `database-notifications-replies.sql`, etc.) in your Supabase SQL editor to create the necessary tables and row-level security policies.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## How to Run Locally
+
+Start the Vite development server:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be accessible at `http://localhost:8080` (or the port specified by Vite).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Building for Production
 
-**Use GitHub Codespaces**
+To create a production build for the web:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run build
+```
 
-## What technologies are used for this project?
+## Mobile Development (Capacitor)
 
-This project is built with:
+The project includes Capacitor for mobile deployment.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Sync Capacitor with the latest web build:**
+```bash
+npm run build:mobile
+```
 
-## How can I deploy this project?
+**Run on Android:**
+```bash
+npm run android
+```
 
-Simply open [Lovable](https://lovable.dev/projects/78acaa02-e120-4d37-9f1b-676b8af27072) and click on Share -> Publish.
+**Run on iOS:**
+```bash
+npm run ios
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Available Scripts
 
-Yes, you can!
+- `npm run dev`: Starts the local development server.
+- `npm run build`: Builds the web app for production.
+- `npm run lint`: Runs ESLint to check for code issues.
+- `npm run cap:sync`: Syncs Capacitor configuration and web assets.
+- `npm run build:mobile`: Builds the web app and syncs with Capacitor.
+- `npm run android` / `npm run ios`: Builds and opens the respective mobile IDEs.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Important Notes
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Do **NOT** commit your `.env` files to version control.
+- When making schema changes, always update your Supabase backend using SQL migrations.
+- If you face mobile deployment issues, ensure you have Android Studio or Xcode installed correctly.
+
+## License
+
+This project is licensed under the MIT License.
