@@ -116,6 +116,4 @@ npm run ios
 - When making schema changes, always update your Supabase backend using SQL migrations.
 - If you face mobile deployment issues, ensure you have Android Studio or Xcode installed correctly.
 
-## License
 
-This project is licensed under the MIT License.
